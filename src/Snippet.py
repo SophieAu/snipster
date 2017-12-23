@@ -26,14 +26,10 @@ class Snippet:
         if file.readline() != "---\n":
             print("File not a valid snippet")
             exit(1)
-        print(file.readline())
-        print("Hello")
         currentLine = file.readline()
 
         # parse frontmatter
         while currentLine != "---\n":
-            # line is frontmatter
-            print(currentLine)
             key,value = currentLine.split(":",1)
             self.assignKeyValues(key, value.lstrip(" ").rstrip("\n"))
             currentLine = file.readline()
@@ -44,7 +40,6 @@ class Snippet:
             self.description += currentLine
             currentLine = file.readline()
         self.description = self.description.lstrip("\n").rstrip("\n")
-        print(self.description)
 
         # parse actual language of the file (for syntax highlighting)
         self.codeLanguage = currentLine.lstrip("```").rstrip("\n")
