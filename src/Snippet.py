@@ -54,6 +54,7 @@ class Snippet:
         while currentLine != "```\n":
             self.code += currentLine
             currentLine = file.readline()
+        self.code = self.code.rstrip("\n")
 
 
     def assignKeyValues(self, key, values):
