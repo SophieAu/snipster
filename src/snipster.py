@@ -8,6 +8,7 @@ from pygments.formatters import Terminal256Formatter
 
 from Snippet import Snippet
 
+
 sourceDir = str(os.path.expanduser("~/.snipster"))
 
 def parseCLIArgs(cliArgs):
