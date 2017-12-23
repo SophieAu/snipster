@@ -4,9 +4,10 @@ class Snippet:
     path = ""
     id = 0
     tags = []
-    lang = ""
+    language = ""
     title = ""
     description = ""
+    codeLanguage = ""
     code = ""
 
     def __init__(self, file, path):
@@ -15,9 +16,10 @@ class Snippet:
         print(self.path)
         print(self.id)
         print(str(self.tags))
-        print(self.lang)
+        print(self.language)
         print(self.title)
         print(self.description)
+        print(self.codeLanguage)
         print(self.code)
 
     def parse(self, file):
