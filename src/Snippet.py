@@ -42,3 +42,13 @@ class Snippet:
         self.description = self.description.lstrip("\n").rstrip("\n")
         print(self.description)
 
+        # parse actual language of the file (for syntax highlighting)
+        self.codeLanguage = currentLine.lstrip("```").rstrip("\n")
+        currentLine = file.readline()
+
+        # parse actual file (the code)
+        while currentLine != "```\n":
+            self.code += currentLine
+            currentLine = file.readline()
+
+
