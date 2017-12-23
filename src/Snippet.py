@@ -22,7 +22,9 @@ class Snippet:
         print(self.codeLanguage)
         print(self.code)
 
+
     def parse(self, file):
+        # validate file formatting
         if file.readline() != "---\n":
             print("File not a valid snippet")
             exit(1)
