@@ -9,11 +9,9 @@ from pygments.formatters import Terminal256Formatter
 from Snippet import Snippet
 
 sourceDir = str(os.path.expanduser("~/.snipster"))
-print(sourceDir)
 
 def parseCLIArgs(cliArgs):
     del cliArgs[0] # deletes the snipster command
-    print(cliArgs)
 
     # open file specified in the now 1st argument
     filePath = sourceDir + "/" + cliArgs[0]

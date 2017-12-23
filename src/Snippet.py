@@ -13,14 +13,6 @@ class Snippet:
     def __init__(self, file, path):
         self.parse(file)
         self.path = path
-        print(self.path)
-        print(self.id)
-        print(str(self.tags))
-        print(self.language)
-        print(self.title)
-        print(self.description)
-        print(self.codeLanguage)
-        print(self.code)
 
 
     def parse(self, file):
