@@ -22,6 +22,7 @@ def parseCLIArgs(cliArgs):
             snippet = Snippet(snippetFile, filePath)
     except FileNotFoundError:
         print("File not found")
+        exit(1)
 
     displaySnippet(snippet)
 
