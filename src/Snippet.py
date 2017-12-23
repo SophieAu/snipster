@@ -32,6 +32,8 @@ class Snippet:
         while currentLine != "---\n":
             # line is frontmatter
             print(currentLine)
+            key,value = currentLine.split(":",1)
+            self.assignKeyValues(key, value.lstrip(" ").rstrip("\n"))
             currentLine = file.readline()
         currentLine = file.readline()
 
@@ -51,4 +53,14 @@ class Snippet:
             self.code += currentLine
             currentLine = file.readline()
 
+
+    def assignKeyValues(self, key, values):
+        if key == "id":
+            self.id = values
+        elif key == "tags":
+            self.tags = [tag.lstrip(" ").rstrip(" ") for tag in values.split(",")]
+        elif key == "title":
+            self.title = values.lstrip("\"").rstrip("\"")
+        elif key == "lang":
+            self.language = values
 
