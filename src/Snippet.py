@@ -9,5 +9,8 @@ class Snippet:
         print(self.path)
 
     def parse(self, file):
+        if file.readline() != "---\n":
+            print("File not a valid snippet")
+            exit(1)
         print(file.readline())
         print("Hello")
