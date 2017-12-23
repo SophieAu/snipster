@@ -35,3 +35,10 @@ class Snippet:
             currentLine = file.readline()
         currentLine = file.readline()
 
+        # parse description
+        while currentLine[:3] != "```":
+            self.description += currentLine
+            currentLine = file.readline()
+        self.description = self.description.lstrip("\n").rstrip("\n")
+        print(self.description)
+
