@@ -12,6 +12,7 @@ sourceDir = str(os.path.expanduser("~/.snipster"))
 
 def parseCLIArgs(cliArgs):
     del cliArgs[0] # deletes the snipster command
+    # DEBUG: print("CLI Arguments: \"" + "\" \"".join(cliArgs) + "\"\n\n\n")
 
     # open file specified in the now 1st argument
     filePath = sourceDir + "/" + cliArgs[0]
