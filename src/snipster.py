@@ -7,6 +7,7 @@ sourceDir = str(os.path.expanduser("~/.snipster"))
 print(sourceDir)
 
 def parseCLIArgs(cliArgs):
+    del cliArgs[0] # deletes the snipster command
     print(cliArgs)
 
 parseCLIArgs(sys.argv)
