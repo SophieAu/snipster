@@ -1,2 +1,5 @@
 # vim swap files
 *.swp
+
+# python cache files
+*/__pycache__
