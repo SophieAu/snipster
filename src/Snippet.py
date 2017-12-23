@@ -26,3 +26,12 @@ class Snippet:
             exit(1)
         print(file.readline())
         print("Hello")
+        currentLine = file.readline()
+
+        # parse frontmatter
+        while currentLine != "---\n":
+            # line is frontmatter
+            print(currentLine)
+            currentLine = file.readline()
+        currentLine = file.readline()
+
