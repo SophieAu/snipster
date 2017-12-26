@@ -31,7 +31,7 @@ def displaySnippet(snippet):
     lexer = get_lexer_by_name(snippet.codeLanguage, stripall=True)
     formatter = Terminal256Formatter()
     code = highlight(snippet.code, lexer, formatter)
-    print("\033[1m" + snippet.title + "\033[0m\n")
+    print("#" + snippet.id + ": \033[1m" + snippet.title + "\033[0m\n")
     print(snippet.description + "\n")
     print(code)
 
