@@ -10,8 +10,14 @@ class Snippet:
     codeLanguage = ""
     code = ""
 
-    def __init__(self, file, path):
-        self.parse(file)
+    def __init__(self, path):
+        try:
+            with open(path) as file:
+                self.parse(file)
+        except FileNotFoundError:
+            print("File not Found")
+            exit(1)
+
         self.path = path
 
 

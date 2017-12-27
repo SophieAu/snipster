@@ -18,14 +18,6 @@ Other Stuff:"""
 
 def parseCLIArgs(cliArgs):
     del cliArgs[0] # deletes the snipster command
-    # open file specified in the now 1st argument
-    filePath = sourceDir + "/" + cliArgs[0]
-    try:
-        with open(filePath) as snippetFile:
-            snippet = Snippet(snippetFile, filePath)
-    except FileNotFoundError:
-        print("File not found")
-        exit(1)
 
 def displaySnippet(snippet):
     lexer = get_lexer_by_name(snippet.codeLanguage, stripall=True)
