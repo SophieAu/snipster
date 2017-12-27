@@ -76,3 +76,7 @@ class Snippet:
         print(code)
 
 
+    def copyToClipboard(self):
+        print("Clipboard")
+
+

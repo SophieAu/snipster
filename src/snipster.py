@@ -26,10 +26,10 @@ def parseCLIArgs(cliArgs):
         return
 
     if cliArgs[0] == "source":
-        print("source snippets")
+        sourceSnippets()
         return
     elif cliArgs[0] == "list":
-        print("Show snippets")
+        showSnippetList(cliArgs[1:])
         return
 
     else:
@@ -51,8 +51,10 @@ def parseCLIArgs(cliArgs):
 
     if cliArgs[0][:2] == "-o":
         print("show snippet")
+        Snippet(snippetFilePath).display()
     elif cliArgs[0][:2] == "-c":
         print("copy snippet")
+        Snippet(snippetFilePath).copyToClipboard()
     elif cliArgs[0][:2] == "-e":
         print("edit snippet")
         openInEditor(snippetFilePath)
