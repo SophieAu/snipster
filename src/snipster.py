@@ -51,10 +51,18 @@ def parseCLIArgs(cliArgs):
 
     if cliArgs[0][:2] == "-o":
         print("show snippet")
-        Snippet(snippetFilePath).display()
+        try:
+            Snippet(snippetFilePath).display()
+        except Exception as e:
+            print(str(e))
+
     elif cliArgs[0][:2] == "-c":
         print("copy snippet")
-        Snippet(snippetFilePath).copyToClipboard()
+        try:
+            Snippet(snippetFilePath).copyToClipboard()
+        except Exception as e:
+            print(str(e))
+
     elif cliArgs[0][:2] == "-e":
         print("edit snippet")
         openInEditor(snippetFilePath)
