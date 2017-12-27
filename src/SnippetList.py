@@ -33,8 +33,8 @@ def openSnippetList():
 
 def findSnippet(id):
     for snippet in snippetList:
-        if snippet.id == id:
-            return snippet.path
+        if snippet[0] == id:
+            return snippet[len(snippet)-1]
 
     print("No snippet with id " + id + " found.")
     exit(1)
