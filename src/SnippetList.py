@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import csv
 from Snippet import Snippet
 
 snippetList = []
@@ -64,7 +65,9 @@ def openSnippetList():
     print("opening file")
     try:
         with open(sourceDir + "/" + snippetListFile) as snippetCSV:
-            snippetList = csv.reader(snippetCSV, delimiter= ";")
+            snippetListCSVFile = csv.reader(snippetCSV, delimiter= ";")
+            for row in snippetListCSVFile:
+                snippetList.append(row)
     except FileNotFoundError:
         print("Didn't find a snippet list file. You can create one by using the source command ('snipster source')")
         exit(1)
@@ -73,7 +76,8 @@ def openSnippetList():
 
 def findSnippet(id):
     for snippet in snippetList:
-        if snippet[0] == id:
+        print(str(snippet))
+        if int(snippet[0]) == int(id):
             return snippet[len(snippet)-1]
 
     print("No snippet with id " + id + " found.")
