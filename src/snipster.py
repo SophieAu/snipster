@@ -5,6 +5,7 @@ import sys
 import subprocess
 
 from Snippet import Snippet
+from SnippetList import *
 
 
 sourceDir = str(os.path.expanduser("~/.snipster"))
@@ -56,10 +57,6 @@ def parseCLIArgs(cliArgs):
         print("edit snippet")
         openInEditor(snippetFilePath)
 
-
-def lookupSnippetPath(id):
-    print("looking up")
-    return("test.txt")
 
 def openInEditor(snippetFilePath):
     editor = os.environ.get('VISUAL') or os.environ.get('EDITOR') or False
