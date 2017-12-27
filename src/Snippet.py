@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import Terminal256Formatter
+
+
 class Snippet:
     path = ""
     id = 0
@@ -61,4 +66,13 @@ class Snippet:
             self.title = values.lstrip("\"").rstrip("\"")
         elif key == "lang":
             self.language = values
+
+    def display(self):
+        lexer = get_lexer_by_name(self.codeLanguage, stripall=True)
+        formatter = Terminal256Formatter()
+        code = highlight(self.code, lexer, formatter)
+        print("#" + self.id + ": \033[1m" + self.title + "\033[0m\n")
+        print(self.description + "\n")
+        print(code)
+
 

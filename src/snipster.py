@@ -2,9 +2,6 @@
 
 import os
 import sys
-from pygments import highlight
-from pygments.lexers import get_lexer_by_name
-from pygments.formatters import Terminal256Formatter
 
 from Snippet import Snippet
 
@@ -18,14 +15,6 @@ Other Stuff:"""
 
 def parseCLIArgs(cliArgs):
     del cliArgs[0] # deletes the snipster command
-
-def displaySnippet(snippet):
-    lexer = get_lexer_by_name(snippet.codeLanguage, stripall=True)
-    formatter = Terminal256Formatter()
-    code = highlight(snippet.code, lexer, formatter)
-    print("#" + snippet.id + ": \033[1m" + snippet.title + "\033[0m\n")
-    print(snippet.description + "\n")
-    print(code)
 
     if len(cliArgs) == 0 or cliArgs[0] == "-h" or cliArgs[0] == "--help":
         print(help)
