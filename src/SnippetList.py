@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import os
+from Snippet import Snippet
 
-snippetList = ""
+snippetList = []
 sourceDir = str(os.path.expanduser("~/.snipster"))
 snippetListFile = "__snipster__.csv"
 
@@ -15,16 +16,55 @@ def lookupSnippetPath(id):
 
 def showSnippetList(filters):
     print("show snippets")
+    openSnippetList()
     print(str(filters))
 
 def sourceSnippets():
     print("Sourcing snippets")
+    walkDirectories(sourceDir)
+    saveSnippetList(sourceDir)
+
+
+def walkDirectories(basePath):
+    allTheFiles = []
+    subDirectories = []
+    for(dirpath, dirnames, filename) in os.walk(basePath):
+        allTheFiles.extend(filename)
+        subDirectories.extend(dirnames)
+        break
+
+    for file in allTheFiles:
+        if file[0] != "_" and file[1] != "_":
+            addToList(basePath + "/" + file)
+    for directory in subDirectories:
+        walkDirectories(basePath + "/" + directory)
+
+
+# formatting: id;title;lang;tag1,tag2;filepath
+def addToList(file):
+    print(str(file))
+    try:
+        snippetList.append(Snippet(file))
+    except Exception:
+        print("Snippet " + str(file) + " not added to list.")
+
+def saveSnippetList(sourceDir):
+    listFile = open(sourceDir + "/" + snippetListFile, "w")
+    for snippet in snippetList:
+        listFile.write(snippet.id + ";")
+        listFile.write(snippet.title + ";")
+        listFile.write(snippet.language + ";")
+        taglist = ""
+        for tag in snippet.tags:
+            taglist += tag + ","
+        listFile.write(taglist.rstrip(",") + ";")
+        listFile.write(snippet.path + "\n")
 
 def openSnippetList():
     print("opening file")
     try:
         with open(sourceDir + "/" + snippetListFile) as snippetCSV:
-            snippetList = csv.reader(snippetCSV)
+            snippetList = csv.reader(snippetCSV, delimiter= ";")
     except FileNotFoundError:
         print("Didn't find a snippet list file. You can create one by using the source command ('snipster source')")
         exit(1)

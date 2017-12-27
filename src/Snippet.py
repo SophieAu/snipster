@@ -29,8 +29,9 @@ class Snippet:
     def parse(self, file):
         # validate file formatting
         if file.readline() != "---\n":
-            print("File not a valid snippet")
-            exit(1)
+            raise Exception("File not a valid snippet")
+            self.exc_info = sys.exc_info()
+            return
         currentLine = file.readline()
 
         # parse frontmatter
