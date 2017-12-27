@@ -2,6 +2,7 @@
 
 import os
 import sys
+import subprocess
 
 from Snippet import Snippet
 
@@ -53,11 +54,28 @@ def parseCLIArgs(cliArgs):
         print("copy snippet")
     elif cliArgs[0][:2] == "-e":
         print("edit snippet")
+        openInEditor(snippetFilePath)
 
 
 def lookupSnippetPath(id):
     print("looking up")
     return("test.txt")
+
+def openInEditor(snippetFilePath):
+    editor = os.environ.get('VISUAL') or os.environ.get('EDITOR') or False
+
+    # assert that the editor is set
+    if editor == False:
+        print("Please set VISUAL or EDITOR in your bashrc to be able to create/edit snippets.")
+        exit(1)
+
+    try:
+        subprocess.run(editor.split(" ") + [snippetFilePath])
+    except OSError:
+        print('Could not launch ' + editor)
+        exit(1)
+
+
 
 parseCLIArgs(sys.argv)
 
