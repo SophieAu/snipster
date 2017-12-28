@@ -34,7 +34,7 @@ def walkDirectories(basePath):
         break
 
     for file in allTheFiles:
-        if file[0] != "_" and file[1] != "_":
+        if file[0:2] != "__":
             addToList(basePath + "/" + file)
     for directory in subDirectories:
         walkDirectories(basePath + "/" + directory)
