@@ -36,7 +36,7 @@ def parseCLIArgs(cliArgs):
         lastArg = cliArgs[len(cliArgs)-1]
         if (len(cliArgs[0]) == 3 and cliArgs[0][2] == "f") or (len(cliArgs) == 3 and cliArgs[1] == "-f"):
             print("File from path")
-            snippetFilePath = lastArg
+            snippetFilePath = sourceDir + "/" + lastArg
         else:
             try:
                 int(lastArg)
@@ -47,7 +47,6 @@ def parseCLIArgs(cliArgs):
             print(lastArg)
             print("File from id")
             snippetFilePath = lookupSnippetPath(lastArg)
-    snippetFilePath = sourceDir + "/" + snippetFilePath
 
     if cliArgs[0][:2] == "-o":
         print("show snippet")
