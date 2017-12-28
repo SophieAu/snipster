@@ -6,7 +6,7 @@ from Snippet import Snippet
 from tabulate import tabulate
 
 snippetList = []
-sourceDir = str(os.path.expanduser("~/.snipster"))
+sourceDir = str(os.path.expanduser("~/.snipster/"))
 snippetListFile = "__snipster__.csv"
 
 
@@ -57,12 +57,12 @@ def walkDirectories(basePath):
             except Exception:
                 print("Snippet " + str(file) + " not added to list.")
     for directory in subDirectories:
-        walkDirectories(basePath + "/" + directory)
+        walkDirectories(basePath + directory + "/")
 
 
 # formatting: id;title;lang;tag1,tag2;filepath
 def saveSnippetList(sourceDir):
-    listFile = open(sourceDir + "/" + snippetListFile, "w")
+    listFile = open(sourceDir + snippetListFile, "w")
     for snippet in snippetList:
         listFile.write(snippet.id + ";")
         listFile.write(snippet.title + ";")
@@ -76,7 +76,7 @@ def saveSnippetList(sourceDir):
 def openSnippetList():
     print("opening file")
     try:
-        with open(sourceDir + "/" + snippetListFile) as snippetCSV:
+        with open(sourceDir + snippetListFile) as snippetCSV:
             snippetListCSVFile = csv.reader(snippetCSV, delimiter= ";")
             for row in snippetListCSVFile:
                 snippetList.append(row)
