@@ -12,8 +12,7 @@ snippetListFile = "__snipster__.csv"
 def lookupSnippetPath(id):
     print("looking up")
     openSnippetList()
-    findSnippet(id)
-    return("test.txt")
+    return findSnippet(id)
 
 def showSnippetList(filters):
     print("show snippets")
