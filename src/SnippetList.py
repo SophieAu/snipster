@@ -3,6 +3,7 @@
 import os
 import csv
 from Snippet import Snippet
+from tabulate import tabulate
 
 snippetList = []
 sourceDir = str(os.path.expanduser("~/.snipster"))
@@ -17,13 +18,23 @@ def lookupSnippetPath(id):
 def showSnippetList(filters):
     print("show snippets")
     openSnippetList()
-    print(str(filters))
+    printSnippets()
 
 def sourceSnippets():
     print("Sourcing snippets")
     walkDirectories(sourceDir)
     saveSnippetList(sourceDir)
 
+
+def printSnippets():
+    headers = ["ID", "Title", "Language", "Tags", "Filename"]
+    table = []
+    for snippet in snippetList:
+        filePathIndex = len(snippet)-1
+        snippet[filePathIndex] = snippet[filePathIndex][len(sourceDir):]
+        table.append(snippet)
+    print(tabulate(snippetList, headers=headers, tablefmt="pipe"))
+    print("Snippets")
 
 def walkDirectories(basePath):
     allTheFiles = []
