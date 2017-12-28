@@ -20,8 +20,7 @@ class Snippet:
             with open(path) as file:
                 self.parse(file)
         except FileNotFoundError:
-            print("File not Found")
-            exit(1)
+            raise FileNotFoundError("File " + path + " not found.")
 
         self.path = path
 
