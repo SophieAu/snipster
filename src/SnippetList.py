@@ -35,19 +35,16 @@ def walkDirectories(basePath):
 
     for file in allTheFiles:
         if file[0:2] != "__":
-            addToList(basePath + "/" + file)
+            print(str(file))
+            try:
+                snippetList.append(Snippet(basePath + file))
+            except Exception:
+                print("Snippet " + str(file) + " not added to list.")
     for directory in subDirectories:
         walkDirectories(basePath + "/" + directory)
 
 
 # formatting: id;title;lang;tag1,tag2;filepath
-def addToList(file):
-    print(str(file))
-    try:
-        snippetList.append(Snippet(file))
-    except Exception:
-        print("Snippet " + str(file) + " not added to list.")
-
 def saveSnippetList(sourceDir):
     listFile = open(sourceDir + "/" + snippetListFile, "w")
     for snippet in snippetList:
