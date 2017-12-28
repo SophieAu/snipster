@@ -18,6 +18,8 @@ def lookupSnippetPath(id):
 def showSnippetList(filters):
     print("show snippets")
     openSnippetList()
+    if filters != []:
+        filterSnippets(filters)
     printSnippets()
 
 def sourceSnippets():
@@ -25,6 +27,9 @@ def sourceSnippets():
     walkDirectories(sourceDir)
     saveSnippetList(sourceDir)
 
+
+def filterSnippets(filters):
+    print(str(filters))
 
 def printSnippets():
     headers = ["ID", "Title", "Language", "Tags", "Filename"]
