@@ -116,8 +116,8 @@ def saveSnippetList(sourceDir):
         listFile.write(snippet.language + ";")
         taglist = ""
         for tag in snippet.tags:
-            taglist += tag + ","
-        listFile.write(taglist.rstrip(",") + ";")
+            taglist += tag + ", "
+        listFile.write(taglist.rstrip(", ") + ";")
         listFile.write(snippet.path + "\n")
 
 def openSnippetList():
