@@ -8,7 +8,7 @@ from Snippet import Snippet
 from SnippetList import *
 
 
-sourceDir = str(os.path.expanduser("~/.snipster"))
+sourceDir = str(os.path.expanduser("~/.snipster/"))
 version = "0.1.0"
 help = """Snipster.
 Usage:
@@ -36,7 +36,7 @@ def parseCLIArgs(cliArgs):
         lastArg = cliArgs[len(cliArgs)-1]
         if (len(cliArgs[0]) == 3 and cliArgs[0][2] == "f") or (len(cliArgs) == 3 and cliArgs[1] == "-f"):
             print("File from path")
-            snippetFilePath = sourceDir + "/" + lastArg
+            snippetFilePath = sourceDir + lastArg
         else:
             try:
                 int(lastArg)
