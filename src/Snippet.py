@@ -59,7 +59,7 @@ class Snippet:
 
     def assignKeyValues(self, key, values):
         if key == "id":
-            self.id = values
+            self.id = int(values)
         elif key == "tags":
             self.tags = [tag.lstrip(" ").rstrip(" ") for tag in values.split(",")]
         elif key == "title":
@@ -71,7 +71,7 @@ class Snippet:
         lexer = get_lexer_by_name(self.codeLanguage, stripall=True)
         formatter = Terminal256Formatter()
         code = highlight(self.code, lexer, formatter)
-        print("#" + self.id + ": \033[1m" + self.title + "\033[0m\n")
+        print("#" + str(self.id) + ": \033[1m" + self.title + "\033[0m\n")
         print(self.description + "\n")
         print(code)
 
