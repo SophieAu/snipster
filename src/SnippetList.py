@@ -49,16 +49,36 @@ def walkDirectories(basePath):
         subDirectories.extend(dirnames)
         break
 
-    for file in allTheFiles:
-        if file[0:2] != "__":
-            print(str(file))
-            try:
-                snippetList.append(Snippet(basePath + file))
-            except Exception:
-                print("Snippet " + str(file) + " not added to list.")
+    addSnippetsToList(allTheFiles, basePath)
     for directory in subDirectories:
         walkDirectories(basePath + directory + "/")
 
+
+
+def addSnippetsToList(allTheFiles, basePath):
+    newSnippets = []
+    for file in allTheFiles:
+        if file[0:2] == "__":
+            continue
+        try:
+            snippet = Snippet(basePath + file)
+            if int(snippet.id) == 0:
+                newSnippets.append(snippet)
+            else:
+                snippetList.append(snippet)
+        except Exception as e:
+            print("Snippet " + str(file) + " not added to list: " + str(e))
+
+    for snippet in newSnippets:
+        newIndex = len(snippetList)+1
+        while existsSnippet(newIndex):
+            newIndex += 1
+        assignId(snippet, newIndex)
+
+def assignId(snippet, newIndex):
+    print(str(snippet.path))
+    snippet.id = newIndex
+    snippetList.append(snippet)
 
 # formatting: id;title;lang;tag1,tag2;filepath
 def saveSnippetList(sourceDir):
@@ -94,3 +114,10 @@ def findSnippet(id):
 
     print("No snippet with id " + id + " found.")
     exit(1)
+
+def existsSnippet(id):
+    for snippet in snippetList:
+        if int(snippet.id) == id:
+            return True
+    return False
+
