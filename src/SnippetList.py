@@ -60,19 +60,19 @@ def unionFilterHits():
 
 def filterByTag(snippet):
     for tag in tags:
-        if tag in snippet[3]:
+        if tag.lower() in snippet[3].lower():
             tagHits.append(snippet)
             return
 
 def filterByKeyword(snippet):
     for keyword in keywords:
-        if keyword in snippet[1]:
+        if keyword.lower() in snippet[1].lower():
             keywordHits.append(snippet)
             return
 
 def filterByLanguage(snippet):
     for language in languages:
-        if language in snippet[2]:
+        if language.lower() in snippet[2].lower():
             languageHits.append(snippet)
             return
 
