@@ -9,6 +9,9 @@ snippetList = []
 sourceDir = str(os.path.expanduser("~/.snipster/"))
 snippetListFile = "__snipster__.csv"
 
+tags = []
+keywords = []
+languages = []
 
 def lookupSnippetPath(id):
     print("looking up")
@@ -20,6 +23,8 @@ def showSnippetList(filters):
     openSnippetList()
     if filters != []:
         filterSnippets(filters)
+        setUpFilters(filters)
+        filterSnippets()
     printSnippets()
 
 def sourceSnippets():
@@ -27,9 +32,31 @@ def sourceSnippets():
     walkDirectories(sourceDir)
     saveSnippetList(sourceDir)
 
+def filterSnippets():
+    print("Filtering")
 
-def filterSnippets(filters):
-    print(str(filters))
+
+def setUpFilters(filters):
+    for value in filters:
+        if value == "-t":
+            filterType = "tags"
+            continue
+        elif value == "-k":
+            filterType = "keywords"
+            continue
+        elif value == "-l":
+            filterType = "language"
+            continue
+
+        if filterType == "tags":
+            tags.append(value)
+        if filterType == "keywords":
+            keywords.append(value)
+        if filterType == "language":
+            languages.append(value)
+    print("Tags: " + str(tags))
+    print("Keywords: " + str(keywords))
+    print("Langs: " + str(languages))
 
 def printSnippets():
     headers = ["ID", "Title", "Language", "Tags", "Filename"]
