@@ -38,6 +38,7 @@ def sourceSnippets():
     print("Sourcing snippets")
     walkDirectories(sourceDir)
     saveSnippetList(sourceDir)
+    print("Finished sourcing snippets.")
 
 def filterSnippets():
     print("Filtering")
