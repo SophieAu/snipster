@@ -33,12 +33,6 @@ def showSnippetList(filters):
         filteredSnippetList = snippetList
     printSnippets()
 
-def sourceSnippets():
-    print("Sourcing snippets")
-    walkDirectories(sourceDir)
-    saveSnippetList(sourceDir)
-    print("Finished sourcing snippets.")
-
 def filterSnippets():
     print("Filtering")
     for snippet in snippetList:
@@ -125,57 +119,6 @@ def printSnippets():
     print("Snippets")
     print(tabulate(filteredSnippetList, headers=headers, tablefmt="pipe"))
 
-def walkDirectories(basePath):
-    allTheFiles = []
-    subDirectories = []
-    for(dirpath, dirnames, filename) in os.walk(basePath):
-        allTheFiles.extend(filename)
-        subDirectories.extend(dirnames)
-        break
-
-    addSnippetsToList(allTheFiles, basePath)
-    for directory in subDirectories:
-        walkDirectories(basePath + directory + "/")
-
-
-
-def addSnippetsToList(allTheFiles, basePath):
-    newSnippets = []
-    for file in allTheFiles:
-        if file[0:2] == "__":
-            continue
-        try:
-            snippet = Snippet(basePath + file)
-            if int(snippet.id) == 0:
-                newSnippets.append(snippet)
-            else:
-                snippetList.append(snippet)
-        except Exception as e:
-            print("Snippet " + str(file) + " not added to list: " + str(e))
-
-    for snippet in newSnippets:
-        newIndex = len(snippetList)+1
-        while existsSnippet(newIndex):
-            newIndex += 1
-        assignId(snippet, newIndex)
-
-def assignId(snippet, newIndex):
-    print(str(snippet.path))
-    snippet.setId(newIndex)
-    snippetList.append(snippet)
-
-# formatting: id;title;lang;tag1,tag2;filepath
-def saveSnippetList(sourceDir):
-    listFile = open(sourceDir + snippetListFile, "w")
-    for snippet in snippetList:
-        listFile.write(str(snippet.id) + ";")
-        listFile.write(snippet.title + ";")
-        listFile.write(snippet.language + ";")
-        taglist = ""
-        for tag in snippet.tags:
-            taglist += tag + ", "
-        listFile.write(taglist.rstrip(", ") + ";")
-        listFile.write(snippet.path + "\n")
 
 def openSnippetList():
     print("opening file")
@@ -198,10 +141,4 @@ def findSnippet(id):
 
     print("No snippet with id " + id + " found.")
     exit(1)
-
-def existsSnippet(id):
-    for snippet in snippetList:
-        if int(snippet.id) == id:
-            return True
-    return False
 

@@ -7,6 +7,7 @@ import subprocess
 from globals import sourceDir, snippetListFile, version, help
 from Snippet import Snippet
 from SnippetList import *
+from Sourcer import sourceSnippets
 
 
 def parseCLIArgs(cliArgs):
