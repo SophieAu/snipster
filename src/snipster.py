@@ -4,16 +4,10 @@ import os
 import sys
 import subprocess
 
+from globals import sourceDir, snippetListFile, version, help
 from Snippet import Snippet
 from SnippetList import *
 
-
-sourceDir = str(os.path.expanduser("~/.snipster/"))
-version = "0.1.0"
-help = """Snipster.
-Usage:
-
-Other Stuff:"""
 
 def parseCLIArgs(cliArgs):
     del cliArgs[0] # deletes the snipster command

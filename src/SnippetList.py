@@ -2,13 +2,12 @@
 
 import os
 import csv
+
+from globals import sourceDir, snippetListFile
 from Snippet import Snippet
 from tabulate import tabulate
 
 snippetList = []
-sourceDir = str(os.path.expanduser("~/.snipster/"))
-snippetListFile = "__snipster__.csv"
-
 tags = []
 keywords = []
 languages = []
