@@ -13,6 +13,9 @@ tags = []
 keywords = []
 languages = []
 filteredSnippetList = []
+tagHits = []
+keywordHits = []
+languageHits = []
 
 def lookupSnippetPath(id):
     print("looking up")
@@ -38,6 +41,50 @@ def sourceSnippets():
 
 def filterSnippets():
     print("Filtering")
+    for snippet in snippetList:
+        if len(tags) != 0:
+            filterByTag(snippet)
+        if len(keywords) !=0:
+            filterByKeyword(snippet)
+        if len(languages) != 0:
+            filterByLanguage(snippet)
+    unionFilterHits()
+
+def unionFilterHits():
+    tempList = []
+    for snippet in tagHits:
+        if (len(keywords) == 0 or snippet in keywordHits) and (len(languages) == 0 or snippet in languageHits):
+            tempList.append(snippet)
+    for snippet in keywordHits:
+        if (len(tags) == 0 or snippet in tagHits) and (len(languages) == 0 or snippet in languageHits):
+            tempList.append(snippet)
+    for snippet in languageHits:
+        if (len(tags) == 0 or snippet in tagHits) and (len(keywords) == 0 or snippet in keywordHits):
+            tempList.append(snippet)
+
+    seen = []
+    for snippet in tempList:
+        if snippet not in seen:
+            filteredSnippetList.append(snippet)
+            seen.append(snippet)
+
+def filterByTag(snippet):
+    for tag in tags:
+        if tag in snippet[3]:
+            tagHits.append(snippet)
+            return
+
+def filterByKeyword(snippet):
+    for keyword in keywords:
+        if keyword in snippet[1]:
+            keywordHits.append(snippet)
+            return
+
+def filterByLanguage(snippet):
+    for language in languages:
+        if language in snippet[2]:
+            languageHits.append(snippet)
+            return
 
 
 def setUpFilters(filters):
