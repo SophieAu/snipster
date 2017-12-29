@@ -71,6 +71,6 @@ def openInEditor(snippetFilePath):
         exit(1)
 
 
-
+# Init Function
 parseCLIArgs(sys.argv)
 
