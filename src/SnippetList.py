@@ -77,7 +77,7 @@ def addSnippetsToList(allTheFiles, basePath):
 
 def assignId(snippet, newIndex):
     print(str(snippet.path))
-    snippet.id = newIndex
+    snippet.setId(newIndex)
     snippetList.append(snippet)
 
 # formatting: id;title;lang;tag1,tag2;filepath
