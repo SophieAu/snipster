@@ -112,6 +112,9 @@ def setUpFilters(filters):
 def printSnippets():
     headers = ["ID", "Title", "Language", "Tags", "Filename"]
     table = []
+    if len(filteredSnippetList) == 1:
+        Snippet(filteredSnippetList[0][4]).display()
+        return
     for snippet in filteredSnippetList:
         filePathIndex = len(snippet)-1
         snippet[filePathIndex] = snippet[filePathIndex][len(sourceDir):]
