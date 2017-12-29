@@ -12,6 +12,7 @@ snippetListFile = "__snipster__.csv"
 tags = []
 keywords = []
 languages = []
+filteredSnippetList = []
 
 def lookupSnippetPath(id):
     print("looking up")
@@ -20,11 +21,14 @@ def lookupSnippetPath(id):
 
 def showSnippetList(filters):
     print("show snippets")
+    global filteredSnippetList
     openSnippetList()
     if filters != []:
         filterSnippets(filters)
         setUpFilters(filters)
         filterSnippets()
+    else:
+        filteredSnippetList = snippetList
     printSnippets()
 
 def sourceSnippets():
@@ -61,12 +65,12 @@ def setUpFilters(filters):
 def printSnippets():
     headers = ["ID", "Title", "Language", "Tags", "Filename"]
     table = []
-    for snippet in snippetList:
+    for snippet in filteredSnippetList:
         filePathIndex = len(snippet)-1
         snippet[filePathIndex] = snippet[filePathIndex][len(sourceDir):]
         table.append(snippet)
-    print(tabulate(snippetList, headers=headers, tablefmt="pipe"))
     print("Snippets")
+    print(tabulate(filteredSnippetList, headers=headers, tablefmt="pipe"))
 
 def walkDirectories(basePath):
     allTheFiles = []
