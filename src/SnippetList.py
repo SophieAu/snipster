@@ -84,7 +84,7 @@ def assignId(snippet, newIndex):
 def saveSnippetList(sourceDir):
     listFile = open(sourceDir + snippetListFile, "w")
     for snippet in snippetList:
-        listFile.write(snippet.id + ";")
+        listFile.write(str(snippet.id) + ";")
         listFile.write(snippet.title + ";")
         listFile.write(snippet.language + ";")
         taglist = ""
