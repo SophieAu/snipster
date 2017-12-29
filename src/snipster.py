@@ -6,7 +6,7 @@ import subprocess
 
 from globals import sourceDir, snippetListFile, version, help
 from Snippet import Snippet
-from SnippetList import *
+from SnippetList import showSnippetList, lookupSnippetPath
 from Sourcer import sourceSnippets
 
 
@@ -30,7 +30,6 @@ def parseCLIArgs(cliArgs):
     else:
         lastArg = cliArgs[len(cliArgs)-1]
         if (len(cliArgs[0]) == 3 and cliArgs[0][2] == "f") or (len(cliArgs) == 3 and cliArgs[1] == "-f"):
-            print("File from path")
             snippetFilePath = sourceDir + lastArg
         else:
             try:
@@ -39,26 +38,21 @@ def parseCLIArgs(cliArgs):
                 print(help)
                 return
 
-            print(lastArg)
-            print("File from id")
             snippetFilePath = lookupSnippetPath(lastArg)
 
     if cliArgs[0][:2] == "-o":
-        print("show snippet")
         try:
             Snippet(snippetFilePath).display()
         except Exception as e:
             print(str(e))
 
     elif cliArgs[0][:2] == "-c":
-        print("copy snippet")
         try:
             Snippet(snippetFilePath).copyToClipboard()
         except Exception as e:
             print(str(e))
 
     elif cliArgs[0][:2] == "-e":
-        print("edit snippet")
         openInEditor(snippetFilePath)
 
 

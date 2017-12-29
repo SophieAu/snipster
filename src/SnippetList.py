@@ -17,16 +17,13 @@ keywordHits = []
 languageHits = []
 
 def lookupSnippetPath(id):
-    print("looking up")
     openSnippetList()
     return findSnippet(id)
 
 def showSnippetList(filters):
-    print("show snippets")
     global filteredSnippetList
     openSnippetList()
     if filters != []:
-        filterSnippets(filters)
         setUpFilters(filters)
         filterSnippets()
     else:
@@ -34,7 +31,6 @@ def showSnippetList(filters):
     printSnippets()
 
 def filterSnippets():
-    print("Filtering")
     for snippet in snippetList:
         if len(tags) != 0:
             filterByTag(snippet)
@@ -99,9 +95,7 @@ def setUpFilters(filters):
             keywords.append(value)
         if filterType == "language":
             languages.append(value)
-    print("Tags: " + str(tags))
-    print("Keywords: " + str(keywords))
-    print("Langs: " + str(languages))
+
 
 def printSnippets():
     headers = ["ID", "Title", "Language", "Tags", "Filename"]
@@ -116,12 +110,10 @@ def printSnippets():
         filePathIndex = len(snippet)-1
         snippet[filePathIndex] = snippet[filePathIndex][len(sourceDir):]
         table.append(snippet)
-    print("Snippets")
     print(tabulate(filteredSnippetList, headers=headers, tablefmt="pipe"))
 
 
 def openSnippetList():
-    print("opening file")
     try:
         with open(sourceDir + snippetListFile) as snippetCSV:
             snippetListCSVFile = csv.reader(snippetCSV, delimiter= ";")
@@ -131,14 +123,10 @@ def openSnippetList():
         print("Didn't find a snippet list file. You can create one by using the source command ('snipster source')")
         exit(1)
 
-
-
 def findSnippet(id):
     for snippet in snippetList:
-        print(str(snippet))
         if int(snippet[0]) == int(id):
             return snippet[len(snippet)-1]
-
     print("No snippet with id " + id + " found.")
     exit(1)
 
