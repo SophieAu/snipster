@@ -3,7 +3,7 @@
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import Terminal256Formatter
-
+import pyperclip
 
 class Snippet:
     path = ""
@@ -77,6 +77,7 @@ class Snippet:
 
 
     def copyToClipboard(self):
-        print("Clipboard")
+        pyperclip.copy(self.code)
+        print("Copied snippet #" + self.id + " to the clipboard.")
 
 
