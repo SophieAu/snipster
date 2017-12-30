@@ -53,7 +53,7 @@ You can filter by tag (``-t``), keyword in the title (``-k``) and language (``-l
 
 
 ### Creating/Editing A Snippet
-![](usage/create.gif)
+![](usage/create.png)
 
 When you create a snippet, an empty file will be created in ``~/.snipster`` and opened in your ``$EDITOR``. For this snippet to be read as valid, it needs to have yaml frontmatter and the actual snippet code needs to be marked as such. You do not need to have any attributes in the front matter but they are heavily encouraged. Valid attributes are ``tags``, ``lang``, ``title``.
 **An id is not necessary.** It will be automatically assigned by snipster when you source again.
