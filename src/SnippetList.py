@@ -127,6 +127,6 @@ def findSnippet(id):
     for snippet in snippetList:
         if int(snippet[0]) == int(id):
             return snippet[len(snippet)-1]
-    print("No snippet with id " + id + " found.")
+    print("No snippet with id " + str(id) + " found.")
     exit(1)
 

@@ -86,6 +86,6 @@ class Snippet:
 
     def copyToClipboard(self):
         pyperclip.copy(self.code)
-        print("Copied snippet #" + self.id + " to the clipboard.")
+        print("Copied snippet #" + str(self.id) + " to the clipboard.")
 
 
