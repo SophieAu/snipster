@@ -1,4 +1,4 @@
-# Snipster
+# snipster
 > A simple cli snippet manager
 
 [![GitHub (pre-)release](https://img.shields.io/github/release/sophieau/snipster/all.svg)](https://github.com/sophieau/snipster/releases)
@@ -9,7 +9,7 @@
 
 ![](asciinema.gif)
 
-Snipster is a command line snippet manager allowing you to view, edit, create and copy snippets from your command line. It follows the Unix philosophy of "do one thing and do it well". 
+snipster is a command line snippet manager allowing you to view, edit, create and copy snippets from your command line. It follows the Unix philosophy of "do one thing and do it well". 
 
 [Installation](#installation) | [Setup](#setup) | [Usage](#usage) | [Troubleshooting](#troubleshooting) | [Other](#other) | [Credits](#credits)
 
