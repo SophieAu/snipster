@@ -8,6 +8,9 @@ from Snippet import Snippet
 snippetList = []
 
 def sourceSnippets():
+    if not os.path.exists(sourceDir):
+        print("Initializing snipster")
+        os.makedirs(sourceDir)
     walkDirectories(sourceDir)
     saveSnippetList(sourceDir)
     print("Finished sourcing snippets.")
