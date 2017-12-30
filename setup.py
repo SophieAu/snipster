@@ -11,10 +11,7 @@ setup(
     keywords     = ['snippet', 'snippets-manager', 'command-line-tool'],
     url          = 'https://github.com/sophieau/snipster',
 
-    download_url = 'https://github.com/sophieau/snipster/archive/v1.0.tar.gz', # I'll explain this in a second
-    packages     = ['src'], # this must be the same as the name above
-    classifiers  = [],
-
+    packages     = ['src'],
     python_requires  = '>=3.6',
     install_requires = [
         'pygment >= 2.2.0',
