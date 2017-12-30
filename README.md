@@ -7,7 +7,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/sophieau/snipster.svg)]()
 [![license](https://img.shields.io/github/license/sophieau/snipster.svg)]()
 
-![](asciinema.gif)
+![](usage/snipster.gif)
 
 snipster is a command line snippet manager allowing you to view, edit, create and copy snippets from your command line. It follows the Unix philosophy of "do one thing and do it well". 
 
@@ -68,8 +68,7 @@ In order for (changes to) a snippet to be recognized you need to ``snipster sour
 
 
 ### Copying A Snippet To The Clipboard
-![](usage/copy.gif)
-
+![](usage/copy.png)
 
 
 ## Troubleshooting
