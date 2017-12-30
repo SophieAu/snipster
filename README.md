@@ -3,7 +3,7 @@
 
 [![GitHub (pre-)release](https://img.shields.io/github/release/sophieau/snipster/all.svg)](https://github.com/sophieau/snipster/releases)
 ![Python](https://img.shields.io/badge/python-v3.6-blue.svg)
-[![PyPI](https://img.shields.io/pypi/v/snipster.svg)]()
+[![PyPI](https://img.shields.io/pypi/v/snipster-py.svg)](https://pypi.python.org/pypi/snipster-py)
 [![GitHub issues](https://img.shields.io/github/issues/sophieau/snipster.svg)](https://github.com/SophieAu/snipster/issues)
 [![license](https://img.shields.io/github/license/sophieau/snipster.svg)](https://github.com/SophieAu/snipster/blob/master/LICENSE)
 
