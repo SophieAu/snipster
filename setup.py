@@ -2,7 +2,7 @@ from distutils.core import setup
 from setuptools import setup
 
 setup(
-    name         = 'snipster',
+    name         = 'snipster-py',
     version      = '1.0',
     author       = 'Sophie Au',
     author_email = 'some.person@web.de',
