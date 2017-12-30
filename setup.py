@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name         = 'snipster-py',
-    version      = '1.0',
+    version      = '1.0.1',
     author       = 'Sophie Au',
     author_email = 'some.person@web.de',
     license      = 'MIT',
