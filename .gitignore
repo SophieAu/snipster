@@ -6,3 +6,10 @@
 
 # asciinema files
 usage/*.json
+
+# build files
+build/*
+snipster\.egg-info/
+MANIFEST
+dist/*
+
