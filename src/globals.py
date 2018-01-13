@@ -6,7 +6,7 @@ sourceDir = str(os.path.expanduser("~/.snipster/"))
 
 snippetListFile = "__snipster__.csv"
 
-version = "1.0.0"
+version = "1.0.2"
 
 help = """Snipster.
 
