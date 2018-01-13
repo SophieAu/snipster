@@ -17,7 +17,7 @@ snipster is a command line snippet manager allowing you to view, edit, create an
 
 ## Installation
 
-snipster is available on [PyPI](https://pypi.python.org/pypi/snipster). This is the easiest way to install it. All dependencies will be installed automatically.
+snipster is available on [PyPI](https://pypi.python.org/pypi/snipster-py). This is the easiest way to install it. All dependencies will be installed automatically.
 
 ```sh
 pip3 install snipster-py
