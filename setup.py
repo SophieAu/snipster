@@ -14,7 +14,7 @@ setup(
     packages     = ['src'],
     python_requires  = '>=3.6',
     install_requires = [
-        'pygments >= 2.2.0',
+        'Pygments >= 2.2.0',
         'pyperclip >= 1.6.0',
         'tabulate >= 0.8.2',
     ]
