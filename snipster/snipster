@@ -9,10 +9,10 @@ from Snippet import Snippet
 from SnippetList import showSnippetList, lookupSnippetPath
 from Sourcer import sourceSnippets
 
+def main():
+	parseCLIArgs(sys.argv[1:])
 
 def parseCLIArgs(cliArgs):
-    del cliArgs[0] # deletes the snipster command
-
     if len(cliArgs) == 0 or cliArgs[0] == "-h" or cliArgs[0] == "--help":
         print(help)
         return
