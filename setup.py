@@ -11,7 +11,12 @@ setup(
     keywords     = ['snippet', 'snippets-manager', 'command-line-tool'],
     url          = 'https://github.com/sophieau/snipster',
 
-    packages     = ['src'],
+    packages     = ['snipster'],
+	entry_points={
+		'console_scripts': [
+			'snipster = snipster.snipster:main'
+		]
+	},
     python_requires  = '>=3.6',
     install_requires = [
         'Pygments >= 2.2.0',
