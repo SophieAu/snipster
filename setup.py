@@ -11,11 +11,9 @@ setup(
     url          = 'https://github.com/sophieau/snipster',
 
     packages     = ['snipster'],
-	entry_points={
-		'console_scripts': [
-			'snipster = snipster.snipster:main'
-		]
-	},
+    entry_points = {
+        'console_scripts': ['snipster=snipster.__main__:main'],
+    },
     python_requires  = '>=3.6',
     install_requires = [
         'Pygments >= 2.2.0',
