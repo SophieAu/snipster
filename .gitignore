@@ -13,3 +13,4 @@ snipster_py\.egg-info/
 MANIFEST
 dist/*
 
+\.DS_Store
