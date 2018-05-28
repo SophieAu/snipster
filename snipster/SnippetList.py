@@ -1,8 +1,8 @@
 import os
 import csv
 
-from globals import sourceDir, snippetListFile
-from Snippet import Snippet
+from snipster.globalVars import sourceDir, snippetListFile
+from snipster.Snippet import Snippet
 from tabulate import tabulate
 
 snippetList = []

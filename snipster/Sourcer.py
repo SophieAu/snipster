@@ -1,7 +1,7 @@
 import os
 
-from globals import sourceDir, snippetListFile
-from Snippet import Snippet
+from snipster.globalVars import sourceDir, snippetListFile
+from snipster.Snippet import Snippet
 
 snippetList = []
 
