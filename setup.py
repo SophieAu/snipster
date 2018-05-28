@@ -11,6 +11,7 @@ setup(
     url          = 'https://github.com/sophieau/snipster',
 
     packages     = ['snipster'],
+    zip_safe     = False,
     entry_points = {
         'console_scripts': ['snipster=snipster.__main__:main'],
     },
