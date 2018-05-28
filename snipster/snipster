@@ -67,8 +67,3 @@ def openInEditor(snippetFilePath):
     except OSError:
         print('Could not launch ' + editor)
         exit(1)
-
-
-# Init Function
-parseCLIArgs(sys.argv)
-

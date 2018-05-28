@@ -27,8 +27,6 @@ class Snippet:
         # validate file formatting
         if file.readline() != "---\n":
             raise Exception("File not a valid snippet")
-            self.exc_info = sys.exc_info()
-            return
         currentLine = file.readline()
 
         # parse frontmatter
