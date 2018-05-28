@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 
 from globals import sourceDir, snippetListFile

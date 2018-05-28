@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import Terminal256Formatter
