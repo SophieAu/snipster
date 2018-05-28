@@ -17,7 +17,7 @@ def sourceSnippets():
 def walkDirectories(basePath):
     allTheFiles = []
     subDirectories = []
-    for(dirpath, dirnames, filename) in os.walk(basePath):
+    for(_, dirnames, filename) in os.walk(basePath):
         allTheFiles.extend(filename)
         subDirectories.extend(dirnames)
         break
