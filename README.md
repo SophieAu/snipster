@@ -11,7 +11,7 @@
 
 snipster is a command line snippet manager allowing you to view, edit, create and copy snippets from your command line. It follows the Unix philosophy of "do one thing and do it well". 
 
-[Installation](#installation) | [Setup](#setup) | [Usage](#usage) | [Troubleshooting](#troubleshooting) | [Other](#other) | [Credits](#credits)
+[Installation](#installation) | [Setup](#setup) | [Usage](#usage) | [Troubleshooting](#troubleshooting) [Credits](#credits)
 
 
 
@@ -75,28 +75,6 @@ In order for (changes to) a snippet to be recognized you need to ``snipster sour
 
 #### Bug Reports and Feature Requests
 Bug reports and feature requests are very much appreciated. Please contact me on Twitter ([@SolviAu](https://twitter.com/solviau)) or open an issue [here](https://github.com/SophieAu/snipster/issues/new).
-
-
-
-## Other
-
-#### Install From Source
-If you do not want to use pip, you can "install" snipster by simply cloning the repo onto your local machine or downloading the latest release from [here](https://github.com/sophieau/snipster/releases)
-
-```sh
-git clone https://github.com/SophieAu/snipster.git
-```
-
-Then, you need to add the file ``snipster`` to your path. the easiest way to do that is to symbolically link to it from the ``bin`` directory
-
-```sh
-ln -s snipster/src/snipster ~/bin/
-```
-
-snipster also needs a few dependencies to function properly. Make sure they are installed
-* [Pygments 2.2.0](http://pygments.org/) (for the syntax highlighting)
-* [pyperclip 1.6.0](https://github.com/asweigart/pyperclip) (to copy snippets to the clipboard)
-* [tabulate 0.8.2](https://bitbucket.org/astanin/python-tabulate) (to display the snippet list in a table)
 
 
 
