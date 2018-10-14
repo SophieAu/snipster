@@ -1,8 +1,8 @@
 import os
 
-sourceDir = str(os.path.expanduser("~/.snipster/"))
+source_dir = str(os.path.expanduser("~/.snipster/"))
 
-snippetListFile = "__snipster__.csv"
+snippet_list_file = "__snipster__.csv"
 
 version = "1.0.3"
 

@@ -2,69 +2,69 @@ import os
 import sys
 import subprocess
 
-from snipster.globalVars import sourceDir, snippetListFile, version, help
+from snipster.globalVars import source_dir, snippet_list_file, version, help
 from snipster.Snippet import Snippet
-from snipster.SnippetList import showSnippetList, lookupSnippetPath
-from snipster.Sourcer import sourceSnippets
+from snipster.SnippetList import show_snippet_list, lookup_snippet_path
+from snipster.Sourcer import source_snippets
 
 def main():
-    parseCLIArgs(sys.argv[1:])
+    parse_cli_args(sys.argv[1:])
     exit(0)
 
-def parseCLIArgs(cliArgs):
-    if len(cliArgs) == 0 or cliArgs[0] == "-h" or cliArgs[0] == "--help":
+def parse_cli_args(cli_args):
+    if len(cli_args) == 0 or cli_args[0] == "-h" or cli_args[0] == "--help":
         print(help)
         return
-    if cliArgs[0] == "-v" or cliArgs[0] == "--version":
+    if cli_args[0] == "-v" or cli_args[0] == "--version":
         print(version)
         return
 
-    if cliArgs[0] == "source":
-        sourceSnippets()
+    if cli_args[0] == "source":
+        source_snippets()
         return
-    elif cliArgs[0] == "list":
-        showSnippetList(cliArgs[1:])
+    elif cli_args[0] == "list":
+        show_snippet_list(cli_args[1:])
         return
 
     else:
-        lastArg = cliArgs[len(cliArgs)-1]
-        if (len(cliArgs[0]) == 3 and cliArgs[0][2] == "f") or (len(cliArgs) == 3 and cliArgs[1] == "-f"):
-            snippetFilePath = sourceDir + lastArg
+        last_arg = cli_args[len(cli_args)-1]
+        if (len(cli_args[0]) == 3 and cli_args[0][2] == "f") or (len(cli_args) == 3 and cli_args[1] == "-f"):
+            snippet_file_path = source_dir + last_arg
         else:
             try:
-                int(lastArg)
+                int(last_arg)
             except ValueError:
                 print(help)
                 return
 
-            snippetFilePath = lookupSnippetPath(lastArg)
+            snippet_file_path = lookup_snippet_path(last_arg)
 
-    if cliArgs[0][:2] == "-o":
+    if cli_args[0][:2] == "-o":
         try:
-            Snippet(snippetFilePath).display()
+            Snippet(snippet_file_path).display()
         except Exception as e:
             print(str(e))
 
-    elif cliArgs[0][:2] == "-c":
+    elif cli_args[0][:2] == "-c":
         try:
-            Snippet(snippetFilePath).copyToClipboard()
+            Snippet(snippet_file_path).copy_to_clipboard()
         except Exception as e:
             print(str(e))
 
-    elif cliArgs[0][:2] == "-e":
-        openInEditor(snippetFilePath)
+    elif cli_args[0][:2] == "-e":
+        open_in_editor(snippet_file_path)
 
 
-def openInEditor(snippetFilePath):
+def open_in_editor(snippet_file_path):
     editor = os.environ.get('VISUAL') or os.environ.get('EDITOR') or False
 
     # assert that the editor is set
-    if editor == False:
+    if not editor:
         print("Please set VISUAL or EDITOR in your bashrc to be able to create/edit snippets.")
         exit(1)
 
     try:
-        subprocess.run(editor.split(" ") + [snippetFilePath])
+        subprocess.run(editor.split(" ") + [snippet_file_path])
     except OSError:
         print('Could not launch ' + editor)
         exit(1)

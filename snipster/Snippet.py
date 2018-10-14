@@ -10,7 +10,7 @@ class Snippet:
     language = ""
     title = ""
     description = ""
-    codeLanguage = ""
+    code_language = ""
     code = ""
 
     def __init__(self, path):
@@ -27,33 +27,33 @@ class Snippet:
         # validate file formatting
         if file.readline() != "---\n":
             raise Exception("File not a valid snippet")
-        currentLine = file.readline()
+        current_line = file.readline()
 
         # parse frontmatter
-        while currentLine != "---\n":
-            key,value = currentLine.split(":",1)
-            self.assignKeyValues(key, value.lstrip(" ").rstrip("\n"))
-            currentLine = file.readline()
-        currentLine = file.readline()
+        while current_line != "---\n":
+            key,value = current_line.split(":",1)
+            self.assign_key_values(key, value.lstrip(" ").rstrip("\n"))
+            current_line = file.readline()
+        current_line = file.readline()
 
         # parse description
-        while currentLine[:3] != "```":
-            self.description += currentLine
-            currentLine = file.readline()
+        while current_line[:3] != "```":
+            self.description += current_line
+            current_line = file.readline()
         self.description = self.description.lstrip("\n").rstrip("\n")
 
         # parse actual language of the file (for syntax highlighting)
-        self.codeLanguage = currentLine.lstrip("```").rstrip("\n")
-        currentLine = file.readline()
+        self.code_language = current_line.lstrip("```").rstrip("\n")
+        current_line = file.readline()
 
         # parse actual file (the code)
-        while currentLine != "```\n":
-            self.code += currentLine
-            currentLine = file.readline()
+        while current_line != "```\n":
+            self.code += current_line
+            current_line = file.readline()
         self.code = self.code.rstrip("\n")
 
 
-    def assignKeyValues(self, key, values):
+    def assign_key_values(self, key, values):
         if key == "id":
             self.id = int(values)
         elif key == "tags":
@@ -63,7 +63,7 @@ class Snippet:
         elif key == "lang":
             self.language = values
 
-    def setId(self, id):
+    def set_id(self, id):
         with open(self.path, "r+") as file:
             file.readline()
             oldFile = file.read()
@@ -72,7 +72,7 @@ class Snippet:
         self.id = id
 
     def display(self):
-        lexer = get_lexer_by_name(self.codeLanguage, stripall=True)
+        lexer = get_lexer_by_name(self.code_language, stripall=True)
         formatter = Terminal256Formatter()
         code = highlight(self.code, lexer, formatter)
         print("#" + str(self.id) + ": \033[1m" + self.title + "\033[0m\n")
@@ -80,8 +80,6 @@ class Snippet:
         print(code)
 
 
-    def copyToClipboard(self):
+    def copy_to_clipboard(self):
         pyperclip.copy(self.code)
         print("Copied snippet #" + str(self.id) + " to the clipboard.")
-
-

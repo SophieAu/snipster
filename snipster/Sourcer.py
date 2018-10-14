@@ -1,71 +1,70 @@
 import os
 
-from snipster.globalVars import sourceDir, snippetListFile
+from snipster.globalVars import source_dir, snippet_list_file
 from snipster.Snippet import Snippet
 
-snippetList = []
+snippet_list = []
 
-def sourceSnippets():
-    if not os.path.exists(sourceDir):
+def source_snippets():
+    if not os.path.exists(source_dir):
         print("Initializing snipster")
-        os.makedirs(sourceDir)
-    walkDirectories(sourceDir)
-    saveSnippetList(sourceDir)
+        os.makedirs(source_dir)
+    walk_directories(source_dir)
+    save_snippet_list(source_dir)
     print("Finished sourcing snippets.")
 
 
-def walkDirectories(basePath):
-    allTheFiles = []
-    subDirectories = []
-    for(_, dirnames, filename) in os.walk(basePath):
-        allTheFiles.extend(filename)
-        subDirectories.extend(dirnames)
+def walk_directories(base_path):
+    all_the_files = []
+    sub_directories = []
+    for(_, dirnames, filename) in os.walk(base_path):
+        all_the_files.extend(filename)
+        sub_directories.extend(dirnames)
         break
 
-    addSnippetsToList(allTheFiles, basePath)
-    for directory in subDirectories:
-        walkDirectories(basePath + directory + "/")
+    add_snippets_to_list(all_the_files, base_path)
+    for directory in sub_directories:
+        walk_directories(base_path + directory + "/")
 
 
-def addSnippetsToList(allTheFiles, basePath):
-    newSnippets = []
-    for file in allTheFiles:
+def add_snippets_to_list(all_the_files, base_path):
+    new_snippets = []
+    for file in all_the_files:
         if file[0:2] == "__":
             continue
         try:
-            snippet = Snippet(basePath + file)
+            snippet = Snippet(base_path + file)
             if int(snippet.id) == 0:
-                newSnippets.append(snippet)
+                new_snippets.append(snippet)
             else:
-                snippetList.append(snippet)
+                snippet_list.append(snippet)
         except Exception as e:
             print("Snippet " + str(file) + " not added to list: " + str(e))
 
-    for snippet in newSnippets:
-        newIndex = len(snippetList)+1
-        while existsSnippet(newIndex):
-            newIndex += 1
-        snippet.setId(newIndex)
-        snippetList.append(snippet)
+    for snippet in new_snippets:
+        new_index = len(snippet_list)+1
+        while existsSnippet(new_index):
+            new_index += 1
+        snippet.setId(new_index)
+        snippet_list.append(snippet)
 
 
 def existsSnippet(id):
-    for snippet in snippetList:
+    for snippet in snippet_list:
         if int(snippet.id) == id:
             return True
     return False
 
 
 # formatting: id;title;lang;tag1,tag2;filepath
-def saveSnippetList(sourceDir):
-    listFile = open(sourceDir + snippetListFile, "w")
-    for snippet in snippetList:
-        listFile.write(str(snippet.id) + ";")
-        listFile.write(snippet.title + ";")
-        listFile.write(snippet.language + ";")
+def save_snippet_list(source_dir):
+    list_file = open(source_dir + snippet_list_file, "w")
+    for snippet in snippet_list:
+        list_file.write(str(snippet.id) + ";")
+        list_file.write(snippet.title + ";")
+        list_file.write(snippet.language + ";")
         taglist = ""
         for tag in snippet.tags:
             taglist += tag + ", "
-        listFile.write(taglist.rstrip(", ") + ";")
-        listFile.write(snippet.path + "\n")
-
+        list_file.write(taglist.rstrip(", ") + ";")
+        list_file.write(snippet.path + "\n")
