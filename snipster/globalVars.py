@@ -25,5 +25,5 @@ Options:
     -c SNIPPET-ID   Copy snippet to clipboard.
     -e SNIPPET-ID   Edit snippet.
     -o SNIPPET-ID   Open snippet
-    -f              Select snippet from filename intead of ID.
+    -f              Select snippet from filename instead of ID.
 """
