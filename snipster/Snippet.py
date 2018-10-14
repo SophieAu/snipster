@@ -16,14 +16,14 @@ class Snippet:
     def __init__(self, path):
         try:
             with open(path) as file:
-                self.parse(file)
+                self._parse(file)
         except FileNotFoundError:
             raise FileNotFoundError("File " + path + " not found.")
 
         self.path = path
 
 
-    def parse(self, file):
+    def _parse(self, file):
         # validate file formatting
         if file.readline() != "---\n":
             raise Exception("File not a valid snippet")
@@ -32,7 +32,7 @@ class Snippet:
         # parse frontmatter
         while current_line != "---\n":
             key,value = current_line.split(":",1)
-            self.assign_key_values(key, value.lstrip(" ").rstrip("\n"))
+            self._assign_key_values(key, value.lstrip(" ").rstrip("\n"))
             current_line = file.readline()
         current_line = file.readline()
 
@@ -53,7 +53,7 @@ class Snippet:
         self.code = self.code.rstrip("\n")
 
 
-    def assign_key_values(self, key, values):
+    def _assign_key_values(self, key, values):
         if key == "id":
             self.id = int(values)
         elif key == "tags":
