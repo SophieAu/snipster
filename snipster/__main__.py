@@ -11,6 +11,7 @@ def main():
     parse_cli_args(sys.argv[1:])
     exit(0)
 
+
 def parse_cli_args(cli_args):
     if len(cli_args) == 0 or cli_args[0] == "-h" or cli_args[0] == "--help":
         print(help)

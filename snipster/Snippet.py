@@ -63,6 +63,7 @@ class Snippet:
         elif key == "lang":
             self.language = values
 
+
     def set_id(self, id):
         with open(self.path, "r+") as file:
             file.readline()
@@ -71,10 +72,12 @@ class Snippet:
             file.write("---\nid: " + str(id) + "\n" + oldFile)
         self.id = id
 
+
     def display(self):
         lexer = get_lexer_by_name(self.code_language, stripall=True)
         formatter = Terminal256Formatter()
         code = highlight(self.code, lexer, formatter)
+
         print("#" + str(self.id) + ": \033[1m" + self.title + "\033[0m\n")
         print(self.description + "\n")
         print(code)

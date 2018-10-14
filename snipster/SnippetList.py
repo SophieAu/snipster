@@ -18,6 +18,7 @@ def lookup_snippet_path(id):
     open_snippet_list()
     return find_snippet(id)
 
+
 def show_snippet_list(filters):
     global filtered_snippet_list
     open_snippet_list()
@@ -28,6 +29,7 @@ def show_snippet_list(filters):
         filtered_snippet_list = snippet_list
     print_snippets()
 
+
 def filter_snippets():
     for snippet in snippet_list:
         if len(tags) != 0:
@@ -37,6 +39,7 @@ def filter_snippets():
         if len(languages) != 0:
             filter_by_language(snippet)
     union_filter_hits()
+
 
 def union_filter_hits():
     temp_list = []
@@ -56,17 +59,20 @@ def union_filter_hits():
             filtered_snippet_list.append(snippet)
             seen.append(snippet)
 
+
 def filter_by_tag(snippet):
     for tag in tags:
         if tag.lower() in snippet[3].lower():
             tag_hits.append(snippet)
             return
 
+
 def filter_by_keyword(snippet):
     for keyword in keywords:
         if keyword.lower() in snippet[1].lower():
             keyword_hits.append(snippet)
             return
+
 
 def filter_by_language(snippet):
     for language in languages:
@@ -120,6 +126,7 @@ def open_snippet_list():
     except FileNotFoundError:
         print("Didn't find a snippet list file. You can create one by using the source command ('snipster source')")
         exit(1)
+
 
 def find_snippet(id):
     for snippet in snippet_list:
