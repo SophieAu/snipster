@@ -45,7 +45,7 @@ def add_snippets_to_list(all_the_files, base_path):
         new_index = len(snippet_list)+1
         while existsSnippet(new_index):
             new_index += 1
-        snippet.setId(new_index)
+        snippet.set_id(new_index)
         snippet_list.append(snippet)
 
 
