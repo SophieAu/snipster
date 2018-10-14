@@ -2,10 +2,10 @@ import os
 import sys
 import subprocess
 
-from snipster.globalVars import source_dir, snippet_list_file, version, help
-from snipster.Snippet import Snippet
-from snipster.SnippetList import show_snippet_list, lookup_snippet_path
-from snipster.Sourcer import source_snippets
+from snipster.global_vars import SOURCE_DIR, VERSION, HELP_MESSAGE
+from snipster.snippet import Snippet, SnippetError
+from snipster.snippet_list import show_snippet_list, lookup_snippet_path
+from snipster.sourcer import source_snippets
 
 def main():
     parse_cli_args(sys.argv[1:])
@@ -13,11 +13,11 @@ def main():
 
 
 def parse_cli_args(cli_args):
-    if len(cli_args) == 0 or cli_args[0] == "-h" or cli_args[0] == "--help":
-        print(help)
+    if not cli_args or cli_args[0] == "-h" or cli_args[0] == "--HELP_MESSAGE":
+        print(HELP_MESSAGE)
         return
-    if cli_args[0] == "-v" or cli_args[0] == "--version":
-        print(version)
+    if cli_args[0] == "-v" or cli_args[0] == "--VERSION":
+        print(VERSION)
         return
 
     if cli_args[0] == "source":
@@ -30,12 +30,12 @@ def parse_cli_args(cli_args):
     else:
         last_arg = cli_args[len(cli_args)-1]
         if (len(cli_args[0]) == 3 and cli_args[0][2] == "f") or (len(cli_args) == 3 and cli_args[1] == "-f"):
-            snippet_file_path = source_dir + last_arg
+            snippet_file_path = SOURCE_DIR + last_arg
         else:
             try:
                 int(last_arg)
             except ValueError:
-                print(help)
+                print(HELP_MESSAGE)
                 return
 
             snippet_file_path = lookup_snippet_path(last_arg)
@@ -43,14 +43,14 @@ def parse_cli_args(cli_args):
     if cli_args[0][:2] == "-o":
         try:
             Snippet(snippet_file_path).display()
-        except Exception as e:
-            print(str(e))
+        except SnippetError as exception:
+            print(str(exception))
 
     elif cli_args[0][:2] == "-c":
         try:
             Snippet(snippet_file_path).copy_to_clipboard()
-        except Exception as e:
-            print(str(e))
+        except SnippetError as exception:
+            print(str(exception))
 
     elif cli_args[0][:2] == "-e":
         open_in_editor(snippet_file_path)
