@@ -23,8 +23,6 @@ snipster is available on [PyPI](https://pypi.python.org/pypi/snipster-py). This 
 pip3 install snipster-py
 ```
 
-If you want to install snipster from source, have a look [here](#install-from-source)
-
 
 ## Setup
 When you first start up snipster, you should run
