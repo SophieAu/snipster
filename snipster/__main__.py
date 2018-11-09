@@ -66,6 +66,7 @@ def open_in_editor(snippet_file_path):
 
     try:
         subprocess.run(editor.split(" ") + [snippet_file_path])
+        source_snippets()
     except OSError:
         print('Could not launch ' + editor)
         exit(1)
