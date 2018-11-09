@@ -1,7 +1,7 @@
 import os
 
 from snipster.global_vars import SOURCE_DIR, SNIPPET_LIST_FILE
-from snipster.Snippet import Snippet, SnippetError
+from snipster.snippet import Snippet, SnippetError
 
 SNIPPET_LIST = []
 
@@ -60,7 +60,7 @@ def exists_snippet(snippet_id):
 def save_snippet_list():
     list_file = open(SOURCE_DIR + SNIPPET_LIST_FILE, "w")
     for snippet in SNIPPET_LIST:
-        list_file.write(str(snippet.id) + ";")
+        list_file.write(str(snippet.snippet_id) + ";")
         list_file.write(snippet.title + ";")
         list_file.write(snippet.language + ";")
         taglist = ""

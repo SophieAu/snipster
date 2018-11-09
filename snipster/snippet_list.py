@@ -2,7 +2,7 @@ import csv
 from tabulate import tabulate
 
 from snipster.global_vars import SOURCE_DIR, SNIPPET_LIST_FILE
-from snipster.Snippet import Snippet
+from snipster.snippet import Snippet
 
 SNIPPET_LIST = []
 TAGS = []
