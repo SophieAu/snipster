@@ -1,0 +1,7 @@
+[ ] switch over to argparse
+[ ] improve all of snipster
+[ ] follow 12 factor cli app
+[ ] allow creation of new snippets from inside snipster
+[ ] improve all of snipster
+[ ] add tests
+[ ] rethink features
