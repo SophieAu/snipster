@@ -7,12 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 Possible change tags are: ``Added``, ``Changed``, ``Deprecated``, ``Removed``, ``Fixed``, ``Security``
 
 
-## [Unreleased](#unreleased)
+## [Unreleased](unreleased)
 ### Added
 - source snippets automatically after editing a snippet
 
 
-## [1.0.3](#v1.0.3) - 2018-05-28
+## [1.0.3](v1.0.3) - 2018-05-28
 ### Fixed
 - Install error when installing through PyPI (due to configuration error)
 
